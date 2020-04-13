@@ -11,8 +11,8 @@ const Index = () => {
       avgDailyIncomePopulation: 0.71
     },
     periodType: 'days',
-    timeToElapse: 30,
-    reportedCases: 674,
+    timeToElapse: 38,
+    reportedCases: 2747,
     population: 66622705,
     totalHospitalBeds: 1380614
   };
