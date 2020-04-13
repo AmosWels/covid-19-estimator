@@ -1,4 +1,3 @@
-// import covid19ImpactEstimator from './estimator.js';
 // let router = require('express').Router();
 const { covid19ImpactEstimator } = require('./estimator.js');
 

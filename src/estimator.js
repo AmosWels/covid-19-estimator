@@ -8,13 +8,17 @@ const covid19ImpactEstimator = (data) => {
     impactCurrentlyInfected,
     impactInfectionsByRequestedTime,
     impactCasesByRequestedTime,
-    impacthospitalBedsByRequestedTime
+    impacthospitalBedsByRequestedTime,
+    ImpactDollarsInFlight,
+    impactCasesForVentilatorsByRequestedTime
   } = Impact(data);
   const {
     severeCurrentlyInfected,
     severeInfectionsByRequestedTime,
     severeCasesByRequestedTime,
-    hospitalBedsByRequestedTime
+    hospitalBedsByRequestedTime,
+    dollarsInFlight,
+    casesForVentilatorsByRequestedTime
   } = severeImpact(data);
   const results = [
     {
@@ -23,17 +27,22 @@ const covid19ImpactEstimator = (data) => {
           currentlyInfected: impactCurrentlyInfected,
           infectionsByRequestedTime: impactInfectionsByRequestedTime,
           severeCasesByRequestedTime: impactCasesByRequestedTime,
-          hospitalBedsByRequestedTime: impacthospitalBedsByRequestedTime
+          hospitalBedsByRequestedTime: impacthospitalBedsByRequestedTime,
+          dollarsInFlight: ImpactDollarsInFlight,
+          casesForVentilatorsByRequestedTime: impactCasesForVentilatorsByRequestedTime
         },
         severeImpact: {
           currentlyInfected: severeCurrentlyInfected,
           infectionsByRequestedTime: severeInfectionsByRequestedTime,
           severeCasesByRequestedTime,
-          hospitalBedsByRequestedTime
+          hospitalBedsByRequestedTime,
+          dollarsInFlight,
+          casesForVentilatorsByRequestedTime
         }
       }
     }
   ];
+  console.log("results", results[0])
   return results;
 };
 
