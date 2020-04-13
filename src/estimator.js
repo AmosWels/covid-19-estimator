@@ -4,18 +4,32 @@ const { Impact } = require('./impact.js');
 const { severeImpact } = require('./severeImpact.js');
 
 const covid19ImpactEstimator = (data) => {
-  const { impactCurrentlyInfected, impactInfectionsByRequestedTime } = Impact(data);
-  const { severeCurrentlyInfected, severeInfectionsByRequestedTime } = severeImpact(data);
+  const {
+    impactCurrentlyInfected,
+    impactInfectionsByRequestedTime,
+    impactCasesByRequestedTime,
+    impacthospitalBedsByRequestedTime
+  } = Impact(data);
+  const {
+    severeCurrentlyInfected,
+    severeInfectionsByRequestedTime,
+    severeCasesByRequestedTime,
+    hospitalBedsByRequestedTime
+  } = severeImpact(data);
   const results = [
     {
       estimate: {
         impact: {
           currentlyInfected: impactCurrentlyInfected,
-          infectionsByRequestedTime: impactInfectionsByRequestedTime
+          infectionsByRequestedTime: impactInfectionsByRequestedTime,
+          severeCasesByRequestedTime: impactCasesByRequestedTime,
+          hospitalBedsByRequestedTime: impacthospitalBedsByRequestedTime
         },
         severeImpact: {
           currentlyInfected: severeCurrentlyInfected,
-          infectionsByRequestedTime: severeInfectionsByRequestedTime
+          infectionsByRequestedTime: severeInfectionsByRequestedTime,
+          severeCasesByRequestedTime,
+          hospitalBedsByRequestedTime
         }
       }
     }

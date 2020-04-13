@@ -1,5 +1,7 @@
 const Impact = (data) => {
-  const { reportedCases, periodType, timeToElapse } = data;
+  const {
+    reportedCases, periodType, timeToElapse, totalHospitalBeds
+  } = data;
   const impactCurrentlyInfected = reportedCases * 10;
   let impactInfectionsByRequestedTime;
   let factor;
@@ -17,7 +19,16 @@ const Impact = (data) => {
     impactInfectionsByRequestedTime = impactCurrentlyInfected * (2 ** Math.round(factor));
   }
 
-  return { impactCurrentlyInfected, impactInfectionsByRequestedTime };
+  const impactCasesByRequestedTime = (15 / 100) * impactInfectionsByRequestedTime;
+  const availableBeds = Math.round((65 / 100) * totalHospitalBeds);
+  const impacthospitalBedsByRequestedTime = availableBeds - impactCasesByRequestedTime;
+
+  return {
+    impactCurrentlyInfected,
+    impactInfectionsByRequestedTime,
+    impactCasesByRequestedTime,
+    impacthospitalBedsByRequestedTime
+  };
 };
 module.exports = {
   Impact
