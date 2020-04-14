@@ -26,10 +26,18 @@ const severeImpact = (data) => {
   const availableBeds = Math.round((65 / 100) * totalHospitalBeds);
   const hospitalBedsByRequestedTime = availableBeds - severeCasesByRequestedTime;
 
-  const casesForVentilatorsByRequestedTime = (2 / 100) * severeCasesByRequestedTime;
+  const casesForVentilatorsByRequestedTime = Math.round((2 / 100) * severeCasesByRequestedTime);
 
-  const avgPopulation = Math.round(((severeInfectionsByRequestedTime - population) / population) * 100);
-  const dollarsInFlight = Math.round((severeInfectionsByRequestedTime * avgPopulation) * avgDailyIncomePopulation * noOfDays);
+  const avgPopulation = Math.round(
+    ((
+      severeInfectionsByRequestedTime - population
+    ) / population) * 100
+  );
+  const dollarsInFlight = Math.round(
+    (
+      severeInfectionsByRequestedTime * avgPopulation * (65 / 100)
+    ) * avgDailyIncomePopulation * noOfDays
+  );
   return {
     severeCurrentlyInfected,
     severeInfectionsByRequestedTime,

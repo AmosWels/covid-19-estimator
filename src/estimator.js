@@ -3,7 +3,7 @@
 const { Impact } = require('./impact.js');
 const { severeImpact } = require('./severeImpact.js');
 
-const covid19ImpactEstimator = (data) => {
+export const covid19ImpactEstimator = (data) => {
   const {
     impactCurrentlyInfected,
     impactInfectionsByRequestedTime,
@@ -42,10 +42,8 @@ const covid19ImpactEstimator = (data) => {
       }
     }
   ];
-  console.log("results", results[0])
-  return results;
+  const resultData = results[0];
+  return resultData;
 };
 
-module.exports = {
-  covid19ImpactEstimator
-};
+export default covid19ImpactEstimator;

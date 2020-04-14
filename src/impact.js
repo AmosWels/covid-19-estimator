@@ -26,10 +26,20 @@ const Impact = (data) => {
   const availableBeds = Math.round((65 / 100) * totalHospitalBeds);
   const impacthospitalBedsByRequestedTime = availableBeds - impactCasesByRequestedTime;
   const casesForICUByRequestedTime = (5 / 100) * impactInfectionsByRequestedTime;
-  const impactCasesForVentilatorsByRequestedTime = (2 / 100) * impactInfectionsByRequestedTime;
+  const impactCasesForVentilatorsByRequestedTime = Math.round(
+    (2 / 100) * impactInfectionsByRequestedTime
+  );
 
-  const avgPopulation = Math.round(((impactInfectionsByRequestedTime - population) / population) * 100);
-  const ImpactDollarsInFlight = Math.round((impactInfectionsByRequestedTime * avgPopulation) * avgDailyIncomePopulation * noOfDays);
+  const avgPopulation = Math.round(
+    ((
+      impactInfectionsByRequestedTime - population
+    ) / population) * 100
+  );
+  const ImpactDollarsInFlight = Math.round(
+    (
+      impactInfectionsByRequestedTime * avgPopulation * (65 / 100)
+    ) * avgDailyIncomePopulation * noOfDays
+  );
   return {
     impactCurrentlyInfected,
     impactInfectionsByRequestedTime,

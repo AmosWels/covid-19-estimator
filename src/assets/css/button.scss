@@ -1,0 +1,22 @@
+@import './variables.scss';
+
+button {
+    letter-spacing: 0.3px;
+    line-height: 15px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid map-get($color-white, 100);
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: map-get($color-grey, 400);
+
+    @media screen and (max-width: 425px) {
+      font-size: 1.05em;
+    }
+  }
+
+  button:hover {
+    background-color: map-get($color-grey, 100);
+    color: $color-primary;
+  }

@@ -1,26 +1,23 @@
-// let router = require('express').Router();
-const { covid19ImpactEstimator } = require('./estimator.js');
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
+import ReactDOM from 'react-dom';
+// eslint-disable-next-line no-unused-vars
+import { BrowserRouter as Router } from 'react-router-dom';
+import './index.css';
+// eslint-disable-next-line no-unused-vars
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-const Index = () => {
-  const data = {
-    region: {
-      name: 'Africa',
-      avgAge: 19.7,
-      avgDailyIncomeInUSD: 5,
-      avgDailyIncomePopulation: 0.71
-    },
-    periodType: 'days',
-    timeToElapse: 38,
-    reportedCases: 2747,
-    population: 66622705,
-    totalHospitalBeds: 1380614
-  };
+ReactDOM.render(
+    <Router>
+        <App />
+    </Router>,
+    document.getElementById('root')
+);
 
-  covid19ImpactEstimator(data);
-};
+// ReactDOM.render(<App />, document.querySelector('#root'));
 
-Index();
-
-module.exports = {
-  Index
-};
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
