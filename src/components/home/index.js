@@ -157,14 +157,14 @@ const Home = () => {
     setResults('done');
   };
   const noData = (<Typography variant="caption" display="inline" gutterBottom>
-     no data, add to view covid numerics
+     No data, add to view Covid-19 estimates
     </Typography>);
   const hasError = (field) => (!!(formState.touched[field] && formState.errors[field]));
   return (
     <div className={classes.root} >
             <Grid container direction="row" justify="center" alignItems="center">
                 <Typography variant="h6" gutterBottom>
-                    Covid Estimator
+                    COVID-19 Estimator
                 </Typography>
             </Grid><br/>
 
